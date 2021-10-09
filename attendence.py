@@ -6,8 +6,12 @@ from datetime import datetime
 
 
 path = 'images'
+#create empty list for images
 images = []
+
+#creating empty list for person names
 pn = []
+
 myList = os.listdir(path)
 print(myList)
 for cu_img in myList:
@@ -20,11 +24,14 @@ print(pn)
 def faceEncodings(images):
     encodeList = []
     for img in images:
+        #To convert image to RGB form
         img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
         encode = face_recognition.face_encodings(img)[0]
         encodeList.append(encode)
     return encodeList
 
+
+#This is to add the attendance to the attendance.csv file
 
 def attendance(name):
     with open('Attendance.csv', 'r+') as f:
@@ -43,6 +50,9 @@ def attendance(name):
 encodeListKnown = faceEncodings(images)
 print('All Encodings Complete!!!')
 
+
+
+#To capture the video and recognising the person
 cap = cv2.VideoCapture(0)
 
 while True:
