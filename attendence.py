@@ -6,14 +6,16 @@ from datetime import datetime
 
 
 path = 'images'
+
 #create empty list for images
 images = []
 
 #creating empty list for person names
 pn = []
-
 myList = os.listdir(path)
 print(myList)
+
+
 for cu_img in myList:
     current_Img = cv2.imread(f'{path}/{cu_img}')
     images.append(current_Img)
@@ -80,8 +82,10 @@ while True:
             attendance(name)
 
     cv2.imshow('Webcam', frame)
+
     if cv2.waitKey(1) == 13:
         break
 
 cap.release()
+
 cv2.destroyAllWindows()
